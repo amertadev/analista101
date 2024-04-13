@@ -1,0 +1,15 @@
+.bannerContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+  .bannerContent {
+    scale: 0.8;
+  }
+}
+
+.live {
+  margin-right: 0.3rem;
+}

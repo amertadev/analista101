@@ -1,0 +1,79 @@
+# Pengerjaan
+
+import { Steps } from 'nextra/components'
+import ImageWithCaption from '../../components/ImageWithCaption'
+import pivotTable from '../../public/pengerjaan/pivot-table.jpeg'
+import dragNDrop from '../../public/pengerjaan/dragndrop.jpeg'
+import penentuanChart from '../../public/pengerjaan/penentuan-chart.jpeg'
+import kustomisasiChart from '../../public/pengerjaan/kustomisasi-chart.jpeg'
+import { GiChessKing } from 'react-icons/gi'
+
+<Steps>
+
+### Rencana
+
+Pengerjaan sesuai dengan pembagian tugas tadi. Ambil contoh Sasa yang memegang tipe pertanyaan **pilih satu** dan pada form survei menanyakan **fakultas** apa yang diambil. Sasa akan membuat pivot table untuk menghitung jumlah mahasiswa yang mengambil fakultas tertentu.
+
+<ImageWithCaption
+  src={pivotTable}
+  alt="pivot-table"
+  caption="Gambar 3. Pilih menu **Insert** lalu klik **Pivot Table**"
+/>
+
+### Pivot Table
+
+Setelah membuat sheet pivot table, Sasa akan memilih kolom fakultas dan nama. Kemudian, Sasa akan memasukkan kolom **fakultas** ke dalam **Rows** dan kolom **nama** ke dalam **Values** dengan cara *drag n drop*. 
+
+Perhatikan kembali, fakultas adalah **objek** yang sifatnya kategorikal (ada FT, FH, FEB) dan nama adalah **subjek** yang sifatnya numerikal (jumlah mahasiswa di FT sekian). Maka, Excel akan menghitung jumlah mahasiswa yang mengambil fakultas tertentu.
+
+<ImageWithCaption
+  src={dragNDrop}
+  alt="drag-n-drop"
+  caption="Gambar 4. *Drag n drop* kolom fakultas ke dalam **Rows** dan kolom nama ke dalam **Values**"
+/>
+
+Di lain kasus, Itsna yang memegang tipe pertanyaan **pilih beberapa** dan pada form survei menanyakan **fasilitas fisik** apa yang diketahui. Sebelum membuat pivot table, Itsna perlu menghitung jumlah responden yang menjawab fasilitas fisik tertentu.
+
+Caranya dengan copy paste kolom fasilitas fisik ke sheet baru dinamakan cleaning fasilitas fisik, lalu ```CTRL + H``` inputkan contoh "Gedung fakultas", lalu klik ```Find All```, dan Excel akan menampilkan jumlah responden yang menjawab "Gedung fakultas", lalu setelah tahu jumlahnya klik ```Replace All``` agar pilihan lainnya atau jawaban pribadi dari responden itu kelihatan. Lakukan hal yang sama untuk fasilitas fisik lainnya. Setelah itu, buat sheet baru lagi untuk menampung jumlahnya, baru membuat pivot table dari sheet tersebut.
+
+### Menentukan Chart
+
+Dalam kasus ini, khusus untuk pertanyaan fakultas maka chart yang cocok adalah **vertical bar** atau nama lainnya **clustered column**.
+
+> Semua pertanyaan pilih satu seperti angkatan cocoknya pakai **pie chart**, dan semua pertanyaan pilih beberapa kecuali fakultas cocoknya pakai chart **horizontal bar** atau nama lainnya **stacked column**, dan semua pertanyaan skala cocoknya pakai **vertical bar**.
+
+Cara membuatnya dengan pilih menu ```Insert```, lalu klik ```Recommended Charts```. Pilih **Clustered Column** dan klik OK.
+
+<ImageWithCaption
+  src={penentuanChart}
+  alt="penentuan-chart"
+  caption="Gambar 5. Menampilkan Vertical Bar Chart"
+/>
+
+### Kustomisasi Chart
+
+Karena chart ini akan digunakan untuk dokumen analisis survei ke Infografis, maka kita perlu memperbaiki label pada pivot table, mengubah judul dan tema (yang ada angkanya pada shape chart) pada chart agar memudahkan pembacaan.
+
+<ImageWithCaption
+  src={kustomisasiChart}
+  alt="kustomisasi-chart"
+  caption="Gambar 6. Mengubah Tampilan Chart"
+/>
+
+### Screenshot Pivot Table dan Chart
+
+Screenshot lalu masukkan ke dalam dokumen analisis survei yang sudah dibuat oleh <span style={{ display: "inline-flex", alignItems: "center" }}><GiChessKing />Kadit</span>.
+
+Struktur dokumen analisis survei adalah sebagai berikut:
+1. Daftar Isi
+2. List Poin Pertanyaan
+3. Kesimpulan
+
+Judul poin pertanyaan jangan ```raw``` langsung pertanyaan, tetapi diubah menjadi ```kalimat informasi```. Misal pertanyaan "Apa saja fasilitas fisik Unsoed yang kamu ketahui?" diubah menjadi "Fasilitas fisik Unsoed yang diketahui responden".
+
+<div style={{ textAlign: 'center' }}>
+    <iframe style={{ marginTop: "14px", borderRadius: "10px", width: "100%", maxWidth: "830px", height: "800px" }} src="https://docs.google.com/document/d/e/2PACX-1vRdPt8H8UlADEXshpx2lYZAwaciAByW6tKeEL7HIGlk6rLWMrfXYFgZrVuzZfTIrA/pub?embedded=true"></iframe>
+    <a style={{ marginTop: '10px', fontSize: '12px', opacity: '0.5' }} href="https://github.com/amerta-io/analista101/blob/main/public/pengerjaan/Analisis%20Survei%20Fasilitas%20Unsoed.docx.pdf">Dok. Analisis Survei Fasilitas Unsoed 2023</a>
+</div>
+
+</Steps>

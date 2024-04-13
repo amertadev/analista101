@@ -1,0 +1,94 @@
+# Persiapan
+
+import { Steps } from 'nextra/components'
+import ImageWithCaption from '../../components/ImageWithCaption'
+import protectForm from '../../public/persiapan/protect-form.jpeg'
+import ambilDataKeSheet from '../../public/persiapan/ambil-data-ke-sheet.jpeg'
+import { IoIosCheckbox, IoMdRadioButtonOn } from 'react-icons/io'
+import { FaPython, FaBalanceScale } from 'react-icons/fa'
+import { Callout, Cards, Card } from 'nextra-theme-docs'
+import { GiChessKing } from 'react-icons/gi'
+
+<Steps>
+### Protect Form
+ 
+<ImageWithCaption
+  src={protectForm}
+  alt="protect-form"
+  caption="Gambar 1. Menutup Form Survei Fasilitas Unsoed 2023"
+/>
+
+Ketika waktu yang ditentukan telah habis, maka form akan kita **tutup** dan tidak bisa diakses lagi. Jika ada **extend** waktu, maka form akan kita buka kembali.
+ 
+### Ambil Data ke Sheet
+
+<ImageWithCaption
+  src={ambilDataKeSheet}
+  alt="ambil-data-ke-sheet"
+  caption="Gambar 2. Data Tersimpan di Sheet"
+/>
+ 
+Dari survei yang telah diisi, kita akan mengambil data tersebut ke dalam **Sheet**, bebas mau pake Google Sheet atau Microsoft Excel. Tetapi disarankan menggunakan Microsoft Excel karena ketika terdapat data yang ```blank``` bisa filter untuk dihapus, sementara Google Sheet tidak bisa. Oleh karena itu, download data dari Google Sheet ke dalam Excel.
+
+<Callout type="warning" emoji="⚠️">
+  Chart yang ada di Google Form jangan dijadikan acuan data, karena pada beberapa pilihan jawaban ada kata yang sama, misal "Ruang Kelas" dan "Fasilitas di Ruang Kelas".
+</Callout>
+
+### Pembagian Tugas
+
+<span style={{ display: "inline-flex", alignItems: "center" }}><GiChessKing />Kadit</span> menyiapkan dokumen **Pembagian Tugas** untuk membagi tugas. Dokumen ini akan di share ke grup WA. Daftar Isi berisi Topik dan Sub Topik yang akan dianalisis.
+
+<table style={{ marginTop: 14 }}>
+    <thead>
+        <tr>
+        <th colSpan="2" style={{ textWrap: 'balance' }}>Pembagian Tugas Analisis Survei Fasilitas Unsoed</th>
+        </tr>
+    </thead>
+  <tbody>
+    {[
+        { key: 'Waktu Pengerjaan', value: '24-26 Mei 2023' },
+        { key: 'Tenggat Survei', value: '15-21 Mei 2023 (extend 24 Mei)' },
+        { key: 'Jumlah Responden', value: '734' },
+        { key: 'Jumlah Pertanyaan', value: '19' },
+    ].map(item => (
+        <tr key={item.key}>
+            <td>{item.key}</td>
+            <td>{item.value}</td>
+        </tr>
+    ))}
+  </tbody>
+</table>
+
+Tipe pertanyaan yang perlu diperhatikan:
+
+<table style={{ marginTop: 14 }}>
+  <tbody>
+    {[
+        { key: 'Pilih Beberapa', value: <IoIosCheckbox />, value2: 'Checkbox' },
+        { key: 'Pilih Satu', value: <IoMdRadioButtonOn />, value2: 'Fakultas, Angkatan, dll.'},
+        { key: 'Terbuka/Isian', value: <FaPython />, value2: 'Opini, Saran, Kritik, dll.' },
+        { key: 'Skala', value: <FaBalanceScale />, value2: 'Tidak Puas - Sangat Puas, 1-5, dll.'},
+    ].map(item => (
+        <tr key={item.key}>
+            <td>{item.value}</td>
+            <td>{item.key}</td>
+            <td>{item.value2}</td>
+        </tr>
+    ))}
+  </tbody>
+</table>
+
+Misal analista ada 4 orang, berarti pembagian tugas bisa dilakukan seperti ini:
+
+- Itsna memegang tipe pertanyaan **Pilih Beberapa**
+- Sasa memegang tipe pertanyaan **Pilih Satu**
+- Jehian memegang tipe pertanyaan **Terbuka/Isian**
+- Luthfi memegang tipe pertanyaan **Skala**
+
+**note: ini cuman contoh, sesuaiin lagi sama pertanyaan yang ada di form survei.*
+
+<Callout type="warning" emoji="⚠️">
+  Jangan lupa untuk dikasih kesimpulan (yang megang salah satu orang) dari hasil analisis yang telah dilakukan.
+</Callout>
+
+</Steps>

@@ -1,0 +1,120 @@
+# Code in Action
+
+import { Steps } from 'nextra/components'
+import ImageWithCaption from '../../components/ImageWithCaption'
+import wordCloud from '../../public/code/wordcloud.png'
+import BarChart from "../../components/BarChart"
+
+<Steps>
+
+### Siapkan Jawaban dari Pertanyaan Terbuka/Isian
+
+Copy paste pada notepad lalu simpan. Upload ke folder content di Google Colab.
+
+### Text Preprocessing
+
+```python copy
+import re
+from collections import Counter
+import matplotlib.pyplot as plt
+from wordcloud import WordCloud
+
+# Fungsi untuk pembersihan teks
+def preprocess_text(text):
+    # Menghilangkan ordered list dengan format "1., "2., dll.
+    text = re.sub(r'"\d+\.', '', text)
+    text = re.sub(r'\d+\.', '', text)
+    # Menghilangkan simbol
+    text = re.sub(r'[^\w\s]', '', text)
+    # Menghilangkan baris baru dan menggantinya dengan spasi
+    text = re.sub(r'\s+', ' ', text)
+    # Mengubah semua teks menjadi lowercase
+    text = text.lower()
+    return text
+
+# Path default untuk file input dan output
+input_path = '/content/input.txt' # Sesuaikan dengan lokasi file input Anda
+output_path = '/content/output.txt' # Sesuaikan dengan lokasi file output Anda
+
+# Membaca teks dari file input
+with open(input_path, 'r', encoding='utf-8') as file:
+    text = file.read()
+
+# Memproses teks
+processed_text = preprocess_text(text)
+
+# Menghilangkan kata tertentu dari teks
+stop_words = {"yang", "di", "dan", "untuk", "juga", "yg", "dengan"}
+words = processed_text.split()
+filtered_words = [word for word in words if word not in stop_words]
+
+# Menghitung frekuensi kata
+word_counts = Counter(filtered_words)
+most_common_words = word_counts.most_common(50)
+
+# Membuat word map
+wordcloud = WordCloud(width = 800, height = 400,
+                background_color ='white',
+                stopwords = stop_words,
+                min_font_size = 10).generate(" ".join(filtered_words))
+
+# Plot word map
+plt.figure(figsize = (8, 8), facecolor = None)
+plt.imshow(wordcloud)
+plt.axis("off")
+plt.tight_layout(pad = 0)
+plt.show()
+
+# Membuat horizontal bar chart
+words, frequencies = zip(*most_common_words)
+plt.figure(figsize=(10,8))
+plt.barh(words, frequencies)
+plt.xlabel('Frekuensi')
+plt.title('50 Kata Paling Sering Muncul')
+plt.show()
+
+# Menghitung frekuensi kata
+word_counts = Counter(filtered_words)
+
+# Mengubah menjadi format token dan mengurutkan dari frekuensi terbanyak
+tokens = sorted((f"('{word}', {count})" for word, count in word_counts.items()), key=lambda x: int(x.split(',')[1][:-1]), reverse=True)[:50]
+tokens_with_brackets = [f"[{tokens[0]}"] + tokens[1:-1] + [f"{tokens[-1]}]"]
+print('Token:')
+print(', '.join(tokens_with_brackets))
+
+# Print kata
+words = [f"'{token.split(',')[0][2:-1]}'" for token in tokens]
+print(f"Kata:\n[{', '.join(words)}]")
+
+# Print angka
+counts = [token.split(',')[1][1:-1] for token in tokens]
+print(f"Angka:\n[{', '.join(counts)}]")
+```
+
+Hasilnya adalah sebagai berikut:
+
+<ImageWithCaption src={wordCloud} alt="Word Cloud" caption="Gambar 7. Word Cloud dari Teks Hasil Preprocessing" />
+
+<BarChart />
+
+### Text Summarization
+
+Dilakukan secara manual, dengan cara mencocokkan kata-kata dari 50 token dengan jawaban asli responden.
+
+```plaintext
+[('fasilitas', 188), ('tidak', 174), ('kampus', 136), ('lebih', 123), ('ada', 120), ('diperbaiki', 109), ('kelas', 108), ('mahasiswa', 103), ('jalan', 103), ('bisa', 101), ('fakultas', 98), ('karena', 94), ('banyak', 86), ('unsoed', 84), ('perlu', 84), ('gedung', 80), ('kurang', 80), ('lagi', 76), ('ruang', 73), ('baik', 70), ('perbaikan', 70), ('semoga', 70), ('nyaman', 69), ('agar', 68), ('sudah', 67), ('saya', 65), ('tolong', 64), ('seperti', 63), ('rusak', 59), ('sehingga', 57), ('ac', 56), ('masih', 53), ('harus', 51), ('dapat', 50), ('kursi', 49), ('itu', 48), ('sangat', 47), ('belajar', 46), ('pada', 45), ('tempat', 45), ('wifi', 45), ('toilet', 44), ('adanya', 44), ('segera', 44), ('atau', 44), ('fisik', 42), ('dari', 42), ('belakang', 41), ('sebaiknya', 41), ('beberapa', 41)]
+```
+
+Hasilnya adalah sebagai berikut (ini hanya contoh):
+
+```plaintext
+1. Fasilitas fisik kampus seperti gedung, ruang kelas, kursi, toilet, dan jalan masih perlu diperbaiki.
+2. Fasilitas penunjang pembelajaran seperti WiFi dan AC harus ditingkatkan agar mahasiswa dapat belajar dengan nyaman.
+3. Meskipun sudah ada, fasilitas di Unsoed masih kurang dan perlu ditambah lagi agar lebih baik.
+4. Fakultas dan pihak kampus sebaiknya segera memperbaiki fasilitas yang rusak atau tidak berfungsi dengan baik.
+5. Adanya perbaikan fasilitas fisik seperti gedung dan ruangan kelas akan membuat mahasiswa lebih nyaman dalam belajar.
+6. Kampus Unsoed harus dapat memperbaiki dan menyediakan fasilitas yang nyaman untuk mahasiswanya.
+7. Fasilitas di belakang area kampus juga tidak boleh dikesampingkan dan perlu mendapat perhatian untuk diperbaiki.
+```
+
+</Steps>

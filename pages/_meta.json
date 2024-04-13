@@ -1,0 +1,31 @@
+{
+  "*": {
+    "theme": {
+      "footer": false
+    }
+  },
+  "index": "Get Started",
+  "insight-wordpress": "Insight WordPress",
+  "tutorial-analista": "Tutorial Analista",
+  "analisis-survei-2024": "Analisis Survei 2024",
+  "about": {
+    "title": "About",
+    "type": "page"
+  },
+  "contact": {
+    "title": "Contact",
+    "type": "menu",
+    "items": {
+      "official": {
+        "title": "IG Official",
+        "href": "https://instagram.com/dataatunsoed",
+        "newWindow": true
+      },
+      "internal": {
+        "title": "IG Internal",
+        "href": "https://instagram.com/sukasukarisdat",
+        "newWindow": true
+      }
+    }
+  }
+}
