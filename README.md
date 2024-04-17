@@ -1,23 +1,66 @@
-# Nextra Docs Template 
+<h1 align="center">Welcome to Analista101!<img src="https://raw.githubusercontent.com/send0moka/send0moka/main/wave.gif" width="26"></h1>
 
-This is a template for creating documentation with [Nextra](https://nextra.site).
+[![](public/assets/demo.gif)](https://analista101.site)
 
-[**Live Demo →**](https://nextra-docs-template.vercel.app)
+<p align="center">
+  <a href="#about">About</a> •
+  <a href="#features">Features</a> •
+  <a href="#install">Install</a> •
+  <a href="#license">License</a>
+</p>
 
-[![](.github/screenshot.png)](https://nextra-docs-template.vercel.app)
+[![](public/assets/demo-button.svg)](https://analista101.site)
 
-## Quick Start
+<h2 id="about">🔍 About</h2>
 
-Click the button to clone this repository and deploy it on Vercel:
+Analista101 is a platform that provides tutorials, tips, and tricks around data analysis. Documentation from the Directorate General of Data Analysis of the Ministry of Research and Data BEM UNSOED.
 
-[![](https://vercel.com/button)](https://vercel.com/new/clone?s=https%3A%2F%2Fgithub.com%2Fshuding%2Fnextra-docs-template&showOptionalTeamCreation=false)
+<div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap">
+    <img src="public/assets/vercel.svg" height="16">
+    <img src="public/assets/nextra.svg" height="14">
+    <img src="public/assets/nextjs.svg" height="13">
+    <img src="public/assets/typescript.svg" height="20">
+    <img src="public/assets/materialui.svg" height="20">
+    <img src="public/assets/mdx.svg" height="13">
+</div>
 
-## Local Development
+<h2 id="features">✨ Features</h2>
 
-First, run `pnpm i` to install the dependencies.
+- Insight Wordpress
+- Tutorial Analista
+    - Persiapan
+    - Pengerjaan
+    - Code in Action
+- Arsip Tugas Analista
 
-Then, run `pnpm dev` to start the development server and visit localhost:3000.
+<h2 id="install">🔌 Install</h2>
 
-## License
+Before cloning the repository, you need to install the following:
 
-This project is licensed under the MIT License.
+- Node.js and a package manager (like bun, npm, pnpm, or yarn).
+- An internet browser (such as Brave, Firefox, Arc, or Chrome).
+
+To clone the repository, follow these steps:
+
+1. Open your terminal.
+2. Navigate to the directory where you want to clone the repository.
+3. Run the following command:
+   ```
+   git clone https://github.com/amertadev/analista101.git
+   ```
+4. After the cloning process is complete, navigate to the cloned repository directory:
+   ```
+   cd analista101
+   ```
+5. Now, you are ready to work on the project. To install dependencies, run:
+   ```
+   bun install
+   ```
+6. To start the development server, use:
+   ```
+   bun run dev
+   ```
+
+<h2 id="license">🔰 License</h2>
+
+Copyright © 2024 [@amertadev](https://github.com/amertadev/). This project is open-source licensed under the MIT License.
