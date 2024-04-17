@@ -15,14 +15,7 @@
 
 Analista101 is a platform that provides tutorials, tips, and tricks around data analysis. Documentation from the Directorate General of Data Analysis of the Ministry of Research and Data BEM UNSOED.
 
-<div style="display: flex; gap: 14px; align-items: center; flex-wrap: wrap">
-    <img src="public/assets/vercel.svg" height="16">
-    <img src="public/assets/nextra.svg" height="14">
-    <img src="public/assets/nextjs.svg" height="13">
-    <img src="public/assets/typescript.svg" height="20">
-    <img src="public/assets/materialui.svg" height="20">
-    <img src="public/assets/mdx.svg" height="13">
-</div>
+<img src="public/assets/tech.svg" height="24">
 
 <h2 id="features">✨ Features</h2>
 
