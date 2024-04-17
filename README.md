@@ -1,8 +1,6 @@
 <h1 align="center">Welcome to Analista101!<img src="https://raw.githubusercontent.com/send0moka/send0moka/main/wave.gif" width="26"></h1>
 
-<video autoplay loop muted playsinline>
-  <source src="public/assets/demo.mp4" type="video/mp4">
-</video>
+[![](https://raw.githubusercontent.com/amertadev/analista101/e9c0268f299b460f59b82b0c62614f10ae509d7e/public/assets/demo.gif)](https://analista101.site)
 
 <p align="center">
   <a href="#about">About</a> •
