@@ -26,14 +26,14 @@ const allData = {
   "Maret 2024": {
     dataSession: [
       8, 34, 11, 21, 39, 20, 14, 22, 19, 15, 18, 28, 19, 11, 21, 16, 9, 6, 2,
-      11, 8, 18, 10, 24, 21, 10
+      11, 8, 18, 10, 24, 21, 24, 28, 14, 26, 18, 23,
     ],
     dataPageview: [
       9, 53, 16, 24, 68, 24, 20, 36, 31, 24, 21, 52, 19, 18, 28, 32, 16, 8, 3,
-      18, 26, 34, 19, 35, 61, 15
+      18, 26, 34, 19, 35, 61, 15, 29, 18, 41, 22, 27,
     ],
     dataAvgSessionDuration: 20,
-    dataTotalUsers: 419,
+    dataTotalUsers: 450,
     xLabels: [
       "1 Mar",
       "2 Mar",
@@ -61,6 +61,85 @@ const allData = {
       "24 Mar",
       "25 Mar",
       "26 Mar",
+      "27 Mar",
+      "28 Mar",
+      "29 Mar",
+      "30 Mar",
+      "31 Mar",
+    ],
+  },
+  "April 2024": {
+    dataSession: [
+      20, 28, 10, 12, 12, 8, 7, 27, 22, 10,
+      28, 19, 13, 6, 4, 14, 51, 59, 55, 53, 
+      16, 23, 13, 12, 9, 12, 22, 14, 4, 8
+    ],
+    dataPageview: [
+      9, 53, 16, 24, 68, 24, 20, 36, 31, 24,
+      21, 105, 32, 14, 9, 20, 64, 122, 132, 106,
+      19, 29, 30, 38, 15, 17, 22, 28, 5, 35
+    ],
+    dataAvgSessionDuration: 31,
+    dataTotalUsers: 425,
+    xLabels: [
+      "1 Apr",
+      "2 Apr",
+      "3 Apr",
+      "4 Apr",
+      "5 Apr",
+      "6 Apr",
+      "7 Apr",
+      "8 Apr",
+      "9 Apr",
+      "10 Apr",
+      "11 Apr",
+      "12 Apr",
+      "13 Apr",
+      "14 Apr",
+      "15 Apr",
+      "16 Apr",
+      "17 Apr",
+      "18 Apr",
+      "19 Apr",
+      "20 Apr",
+      "21 Apr",
+      "22 Apr",
+      "23 Apr",
+      "24 Apr",
+      "25 Apr",
+      "26 Apr",
+      "27 Apr",
+      "28 Apr",
+      "29 Apr",
+      "30 Apr",
+    ],
+  },
+  "Mei 2024": {
+    dataSession: [
+      9, 15, 19, 16, 6, 15, 8, 11, 9, 11,
+      5, 
+      // tambahin
+    ],
+    dataPageview: [
+      17, 28, 73, 20, 9, 35, 20, 14, 10, 17,
+      6, 
+      // tambahin
+    ],
+    dataAvgSessionDuration: 29,
+    dataTotalUsers: 392,
+    xLabels: [
+      "1 Apr",
+      "2 Apr",
+      "3 Apr",
+      "4 Apr",
+      "5 Apr",
+      "6 Apr",
+      "7 Apr",
+      "8 Apr",
+      "9 Apr",
+      "10 Apr",
+      "11 Apr",
+      // tambahin
     ],
   },
 }
@@ -75,7 +154,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function AreaChart() {
   const [isDarkMode, setIsDarkMode] = React.useState(false)
-  const [selectedPeriod, setSelectedPeriod] = React.useState("Maret 2024")
+  const [selectedPeriod, setSelectedPeriod] = React.useState("Mei 2024")
   const toggleTheme = () => {
     setIsDarkMode((prev) => !prev)
   }
@@ -90,15 +169,19 @@ export default function AreaChart() {
       (data) => data.dataPageview
     )
     const allXLabels = Object.values(allData).flatMap((data) => data.xLabels)
-    const allSessionDurationData = Object.values(allData).map(data => data.dataAvgSessionDuration);
-    const avgSessionDuration = allSessionDurationData.reduce((acc, curr) => acc + curr, 0) / allSessionDurationData.length;
-    const lastPeriodData = Object.values(allData)[Object.values(allData).length - 1]
+    const allSessionDurationData = Object.values(allData).map(
+      (data) => data.dataAvgSessionDuration
+    )
+    const avgSessionDuration =
+      allSessionDurationData.reduce((acc, curr) => acc + curr, 0) /
+      allSessionDurationData.length
+    const allTotalUsers = Object.values(allData).reduce((acc, curr) => acc + curr.dataTotalUsers, 0)
     return {
       dataSession: allSessionData,
       dataPageview: allPageviewData,
       xLabels: allXLabels,
       dataAvgSessionDuration: avgSessionDuration,
-      dataTotalUsers: lastPeriodData.dataTotalUsers,
+      dataTotalUsers: allTotalUsers,
     }
   }
   const {
@@ -111,7 +194,14 @@ export default function AreaChart() {
   const totalSession = dataSession.reduce((acc, curr) => acc + curr, 0)
   const totalPageview = dataPageview.reduce((acc, curr) => acc + curr, 0)
   return (
-    <div style={{ marginTop: "20px", marginBottom: "150px", width: "100%", height: "400px" }}>
+    <div
+      style={{
+        marginTop: "20px",
+        marginBottom: "150px",
+        width: "100%",
+        height: "400px",
+      }}
+    >
       <ThemeProvider theme={isDarkMode ? lightTheme : darkTheme}>
         <IconButton
           onClick={toggleTheme}
@@ -128,6 +218,8 @@ export default function AreaChart() {
           <MenuItem value="All">All</MenuItem>
           <MenuItem value="Februari 2024">Februari 2024</MenuItem>
           <MenuItem value="Maret 2024">Maret 2024</MenuItem>
+          <MenuItem value="April 2024">April 2024</MenuItem>
+          <MenuItem value="Mei 2024">Mei 2024</MenuItem>
         </Select>
         <LineChart
           series={[
