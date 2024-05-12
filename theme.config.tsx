@@ -14,15 +14,15 @@ const Logo = () => {
 const config: DocsThemeConfig = {
   logo: Logo,
   project: {
-    link: "https://github.com/amerta-io/analista101",
+    link: "https://github.com/amertadev/analista101",
   },
   chat: {
     link: "https://discordapp.com/users/589304761921306638",
   },
-  docsRepositoryBase: "https://github.com/amerta-io/analista101",
+  docsRepositoryBase: "https://github.com/amertadev/analista101",
   banner: {
     text: <BannerContent />,
-    dismissible: false
+    dismissible: false,
   },
 }
 
