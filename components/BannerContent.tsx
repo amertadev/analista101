@@ -18,8 +18,8 @@ const LiveIcon = () => (
 
 const SurveyAnalysis = () => (
   <span>
-    Analisis Survei Awal Periode 2024 -{" "}
-    <Countdown date="2024-03-31T24:00:00+07:00" />
+    Analisis Survei Persiapan Pascakuliah -{" "}
+    <Countdown date="2024-05-17T24:00:00+07:00" />
   </span>
 )
 
