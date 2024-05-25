@@ -117,16 +117,18 @@ const allData = {
   "Mei 2024": {
     dataSession: [
       9, 15, 19, 16, 6, 15, 8, 11, 9, 11,
-      5, 
+      5, 17, 13, 18, 9, 23, 23, 15, 27, 12,
+      13, 15, 5, 11
       // tambahin
     ],
     dataPageview: [
       17, 28, 73, 20, 9, 35, 20, 14, 10, 17,
-      6, 
+      6, 20, 15, 26, 15, 26, 36, 23, 48, 20,
+      25, 34, 6, 12
       // tambahin
     ],
-    dataAvgSessionDuration: 29,
-    dataTotalUsers: 392,
+    dataAvgSessionDuration: 20,
+    dataTotalUsers: 323,
     xLabels: [
       "1 Apr",
       "2 Apr",
@@ -139,6 +141,19 @@ const allData = {
       "9 Apr",
       "10 Apr",
       "11 Apr",
+      "12 Apr",
+      "13 Apr",
+      "14 Apr",
+      "15 Apr",
+      "16 Apr",
+      "17 Apr",
+      "18 Apr",
+      "19 Apr",
+      "20 Apr",
+      "21 Apr",
+      "22 Apr",
+      "23 Apr",
+      "24 Apr",
       // tambahin
     ],
   },
